@@ -110,7 +110,7 @@
           
           <input id="email" type="text" id="hero-field" name="hero-field" class="w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
         </div>
-        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="onAddEmail()">Join!</button>
+        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" id="join-btn" onclick="onAddEmail()">Join!</button>
       </div>
       <p class="text-sm mt-2 text-gray-500 mb-8 w-full" id="message">Enter your Mail to get Early Acess.</p>
     
@@ -313,7 +313,7 @@
             </div>
           </section>
     </div>
-    <section class="modal sm:left-1/3  hidden ">
+    <section class="modal sm:left-1/3 hidden  ">
       <div class="flex justify-end">
         
         <button class="btn-close">⨉</button>
@@ -417,6 +417,7 @@ const closeModalBtn = document.querySelector(".btn-close");
 const closeModal = function () {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
+  document.querySelector('#join-btn').innerHTML = "Join!"
 };
 
 // close the modal when the close button and overlay is clicked
@@ -438,6 +439,7 @@ const openModal = function () {
 
 
 function onAddEmail(){
+  document.querySelector('#join-btn').innerHTML = `<div style="width:30px;height:30px"> <img src="images/load.gif" ></img></div>`
   const email = document.querySelector('#email').value;
   console.log(email);
   let res = axios({
